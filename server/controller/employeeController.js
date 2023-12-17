@@ -188,9 +188,9 @@ const sortByName = async (req,res)=>{
 }
 const assignDepartmentToEmployee = async (req, res) => {
     try {
-        const { employeeId, department } = req.body;
+        const { employee_id, department } = req.body;
 
-        const employee = await Employee.findOne({ employee_id: employeeId });
+        const employee = await Employee.findOne({ employee_id: employee_id });
 
         if (!employee) {
             return res.status(404).json({ message: 'Employee not found' });
@@ -199,7 +199,7 @@ const assignDepartmentToEmployee = async (req, res) => {
         employee.department = department;
         await employee.save();
 
-        const updatedEmployee = await Employee.findOne({ employee_id: employeeId });
+        const updatedEmployee = await Employee.findOne({ employee_id: employee_id });
 
         res.json({ message: 'Department assigned to employee successfully', employee: updatedEmployee });
     } catch (error) {
@@ -207,6 +207,23 @@ const assignDepartmentToEmployee = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+const getDepartmentEmployeeMapping = async (req, res) => {
+    const { department } = req.params;
+    try {
+      const employees = await Employee.find({ department: department });
+  
+      if (!employees || employees.length === 0) {
+        return res.status(404).json({ message: 'Employees not found for this department' });
+      }
+  
+      res.json({ message: 'Department employee mapping', employees: employees });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
+  
 
 
 
@@ -226,6 +243,7 @@ module.exports = {
     deleteEmployee,
     sortByLocation,
     sortByName,
-    assignDepartmentToEmployee
+    assignDepartmentToEmployee,
+    getDepartmentEmployeeMapping
 
 };

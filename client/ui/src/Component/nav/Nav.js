@@ -10,7 +10,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { NavLink } from 'react-router-dom';
 import { useMediaQuery, Paper } from '@mui/material';
-import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../../app/LoginSlice';
@@ -18,10 +17,9 @@ import Button from '@mui/material/Button';
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const isLoggedin = Cookies.get('user') !== undefined || localStorage.getItem('clientId');
   const isSmallScreen = useMediaQuery('(max-width:700px)');
   const [openDrawer, setOpenDrawer] = useState(false);
-  const isLogin = useSelector((state) => state.setLogin); // Assuming your Redux state property is named 'isLogin'
+  const isLogin = useSelector((state) => state.setLogin); 
 
    const dispatch= useDispatch()
   const handleDrawerToggle = () => {
@@ -37,8 +35,7 @@ const NavBar = () => {
   const menuItems = [
     { text: 'Employees', link: '/employees' },
     { text: 'Department', link: '/department' },
-    { text: isLogin ? '' : 'Register/Login', link: isLoggedin ? '/profile' : '/login' },
-    { text: isLogin ? 'Log Out' : '', link: '', action: handleLogOut }
+    { text: isLogin ? 'logout' : 'Register/Login', link: isLogin ? '/' : '/login',action:handleLogOut },
   ];
 
   const renderDrawer = (

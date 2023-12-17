@@ -6,7 +6,6 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -21,7 +20,6 @@ import { useSelector } from 'react-redux';
 import EditModal from './EditedData';
 
 export default function BioCard({ data, handleDelete }) {
-  const isLoggedIn = Cookies.get('user');
   const manager = localStorage.getItem('manager');
   const [loading, setLoading] = useState(false);
   const isLogin = useSelector((state) => state.setLogin);
@@ -120,6 +118,9 @@ export default function BioCard({ data, handleDelete }) {
             </Typography>
             <Typography variant="body1" sx={{ mb: '8px' }}>
               {`Employee Address : ${editedData.address}`}
+            </Typography>
+            <Typography variant="body1" sx={{ mb: '8px' }}>
+              {`Employee Department : ${editedData.department}`}
             </Typography>
             
 

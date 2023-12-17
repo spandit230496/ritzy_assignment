@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, Select, MenuItem, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { setLogin } from '../app/LoginSlice';
 
 const EditModal = ({ open, handleClose, initialData }) => {
   const [editedData, setEditedData] = useState({ ...initialData });
   const departmentList = useSelector((state) => state.setDepartment);
-
+  const [loading ,setloading]= useState(false)
   const handleEditInputChange = (e) => {
     const { name, value } = e.target;
     setEditedData((prevState) => ({
@@ -18,10 +19,9 @@ const EditModal = ({ open, handleClose, initialData }) => {
   const handleSubmit = async () => {
     try {
       const response = await axios.put('http://localhost:8080/employee/assign-department/', editedData);
-      console.log('Updated Data:', response.data); // Log the updated data from the response
-
-      // Close the modal
+      
       handleClose();
+      window.location.reload()
     } catch (error) {
       console.error('Error updating employee data:', error);
     }
@@ -29,6 +29,7 @@ const EditModal = ({ open, handleClose, initialData }) => {
 
   return (
     <Dialog open={open} onClose={handleClose}>
+      
       <DialogTitle>Edit Details</DialogTitle>
       <DialogContent>
         <TextField name="name" label="Name" value={editedData.name} onChange={handleEditInputChange} fullWidth margin="normal" />
@@ -59,7 +60,7 @@ const EditModal = ({ open, handleClose, initialData }) => {
         >
           {departmentList.length > 0 &&
             departmentList[0].map((department, index) => (
-              <MenuItem key={index} value={department._id}>
+              <MenuItem key={index} value={department.name}>
                 {department.name}
               </MenuItem>
             ))}

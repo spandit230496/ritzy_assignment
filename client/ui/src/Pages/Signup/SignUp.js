@@ -33,6 +33,7 @@ const RegisterEmployee = () => {
       const response = await axios.post('http://localhost:8080/employee/register', formData);
       if (response.status === 200||201) {
         setisloading(false)
+        console.log("=================",response)
         toast("registered sucessfully")
         navigate('/employees')
         
@@ -46,7 +47,8 @@ const RegisterEmployee = () => {
 
   return (
     <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }}>
-      {loading?<CircularProgress/>:<Grid item xs={12} sm={6} md={4}>
+      {loading?<CircularProgress/>:
+      <Grid item xs={12} sm={6} md={4}>
         <div>
           <TextField
             name="name"

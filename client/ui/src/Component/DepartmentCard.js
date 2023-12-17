@@ -8,7 +8,6 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import { useState ,useEffect} from 'react';
-import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -20,17 +19,8 @@ import { setEdit } from '../app/EditSlice';
 
 
 export default function DepartmentCard({data,deleteDeparment }) {
-  const isLoggedIn = Cookies.get('user');
   const dispatch =  useDispatch()
   const manager= localStorage.getItem("manager")
-  console.log(manager,"====================")
- 
-
-
-
-  
-
- 
   const navigate = useNavigate()
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
@@ -45,7 +35,9 @@ const departmentdata={
   "isEdit":true
 }
 
-
+const getData =()=>{
+  navigate(`/get-employee/${data.name}`)
+}
  
  
   return (
@@ -81,7 +73,7 @@ const departmentdata={
         </Typography>
         <Typography variant="body1" sx={{ mb: '8px' ,display:"flex",color:"blue"}}>
           click the icon see the employees
-          <ArrowCircleRight/>
+          <ArrowCircleRight onClick={getData}/>
         </Typography>
        
        
