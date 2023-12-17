@@ -188,7 +188,7 @@ const sortByName = async (req,res)=>{
 }
 const assignDepartmentToEmployee = async (req, res) => {
     try {
-        const { employeeId, departmentId } = req.body;
+        const { employeeId, department } = req.body;
 
         const employee = await Employee.findOne({ employee_id: employeeId });
 
@@ -196,15 +196,19 @@ const assignDepartmentToEmployee = async (req, res) => {
             return res.status(404).json({ message: 'Employee not found' });
         }
 
-        employee.department = departmentId;
+        employee.department = department;
         await employee.save();
 
-        res.json({ message: 'Department assigned to employee successfully', employee });
+        const updatedEmployee = await Employee.findOne({ employee_id: employeeId });
+
+        res.json({ message: 'Department assigned to employee successfully', employee: updatedEmployee });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+
 
 
 

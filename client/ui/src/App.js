@@ -18,6 +18,8 @@ import Department from './Pages/DepartmentList/Department';
 import EmployeeDetails from './Pages/EmployeeDetails';
 import Login from './Pages/Login/Login';
 import RegisterEmployee from './Pages/Signup/SignUp';
+import { Link } from 'react-router-dom';
+
 function App({logout}) {
  
   const [vis,setVis]=useState(logout)

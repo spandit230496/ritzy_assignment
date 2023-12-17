@@ -22,8 +22,8 @@ const employeeSchema = mongoose.Schema({
         required: true
     },
     department: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Department' 
+        type: String, 
+        default: 'not assigned yet' 
     }
 });
 

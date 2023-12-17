@@ -4,11 +4,15 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link ,useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../app/LoginSlice';
 
 const Login = () => {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const navigate = useNavigate()
+  const dispatch = useDispatch() 
+
 
   const [loginData, setLoginData] = useState({
     employee_id: '',
@@ -29,6 +33,7 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:8080/employee/login', loginData);
       localStorage.setItem("manager",response.data.employee.position=="managerial")
+      dispatch(setLogin(true))
       console.log("===========",response)
       navigate('/employees')
       

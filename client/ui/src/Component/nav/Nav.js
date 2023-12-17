@@ -9,40 +9,41 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { NavLink } from 'react-router-dom';
-import { useMediaQuery ,Paper} from '@mui/material';
+import { useMediaQuery, Paper } from '@mui/material';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogin } from '../../app/LoginSlice';
+import Button from '@mui/material/Button';
 
 const NavBar = () => {
   const navigate = useNavigate();
   const isLoggedin = Cookies.get('user') !== undefined || localStorage.getItem('clientId');
   const isSmallScreen = useMediaQuery('(max-width:700px)');
   const [openDrawer, setOpenDrawer] = useState(false);
+  const isLogin = useSelector((state) => state.setLogin); // Assuming your Redux state property is named 'isLogin'
 
+   const dispatch= useDispatch()
   const handleDrawerToggle = () => {
     setOpenDrawer(!openDrawer);
   };
 
   const handleLogOut = () => {
-   
     localStorage.removeItem('manager');
-  
-
-
+    dispatch(setLogin(false))
     navigate('/');
   };
 
   const menuItems = [
     { text: 'Employees', link: '/employees' },
     { text: 'Department', link: '/department' },
-    { text: isLoggedin ? 'Profile' : 'Register/Login', link: isLoggedin ? '/profile' : '/login' },
-    { text: isLoggedin ? 'Log Out' : '', link: '', action: handleLogOut }
+    { text: isLogin ? '' : 'Register/Login', link: isLoggedin ? '/profile' : '/login' },
+    { text: isLogin ? 'Log Out' : '', link: '', action: handleLogOut }
   ];
 
   const renderDrawer = (
-    <Drawer anchor="right" open={openDrawer} onClose={handleDrawerToggle}  >
-       <Paper style={{ width: '50vw' }}>
-     
+    <Drawer anchor="right" open={openDrawer} onClose={handleDrawerToggle}>
+      <Paper style={{ width: '50vw' }}>
         {menuItems.map((item, index) => (
           <ListItem
             button
@@ -50,13 +51,10 @@ const NavBar = () => {
             component={NavLink}
             to={item.link}
             onClick={item.action || handleDrawerToggle}
-
-            
           >
             <ListItemText primary={item.text} />
           </ListItem>
         ))}
-    
       </Paper>
     </Drawer>
   );
@@ -86,7 +84,7 @@ const NavBar = () => {
               {renderDrawer}
             </>
           ) : (
-            <List style={{ display: 'flex', flexDirection: 'row' ,width:"45%"}}>
+            <List style={{ display: 'flex', flexDirection: 'row', width: "45%" }}>
               {menuItems.map((item, index) => (
                 <ListItem
                   button

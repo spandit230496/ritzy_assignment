@@ -6,6 +6,8 @@ import { Skeleton, CircularProgress, Box } from '@mui/material';
 import DepartmentCard from '../../Component/DepartmentCard';
 import AddDepartment from '../AddDepartment/AddDepartment';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setDepartmentList } from '../../app/Department';
 
 const Department = () => {
   const isLoggedin = true;
@@ -16,6 +18,7 @@ const Department = () => {
   
   const editState = useSelector((state) => state.edit);
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch()
 
   const fetchDepartments = async () => {
     setIsLoading(true);
@@ -23,6 +26,7 @@ const Department = () => {
       const response = await axios.get("http://localhost:8080/department/get");
       const { data } = response;
       setDepartment(data.departments);
+      dispatch(setDepartmentList(data.departments))
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -36,7 +40,6 @@ const Department = () => {
 
   useEffect(() => {
     setShowModal(editState);
-    console.log("=================",showModal)
   }, [editState]);
 
   const deleteDepartment = async (id) => {
