@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const secret = "itsmesandy"
+const secret = "secretcode"
 
 const setUserToken = (user)=>{
  return (   
