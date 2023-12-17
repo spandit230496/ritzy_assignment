@@ -1,0 +1,30 @@
+*{
+    font-family: 'poppins';
+}
+.filter-box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    width: 100%;
+    position: sticky;
+    top: 3.5rem;
+    z-index: 100;
+    background: white;
+
+}
+.filter-box select{
+    text-align: center;
+    border: none;
+}
+
+.card-box{
+    margin: auto ;
+    display: grid;
+    width: 80%;
+    overflow-x: hidden;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow-y: hidden;
+    row-gap: 1rem;
+}

@@ -1,0 +1,25 @@
+.nav{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    position: sticky;
+    top:0;
+    background: transparent;
+    z-index: 9999;
+}
+.navlink{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.link {
+    text-decoration: slateblue;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
