@@ -68,9 +68,6 @@ const getData =()=>{
         <Typography variant="h5" sx={{ fontWeight: 'bold', mb: '8px' }}>
           {data.name}
         </Typography>
-        <Typography variant="body1" sx={{ mb: '8px' }}>
-          {`Number of Employees ${7}`}
-        </Typography>
         <Typography variant="body1" sx={{ mb: '8px' ,display:"flex",color:"blue"}}>
           click the icon see the employees
           <ArrowCircleRight onClick={getData}/>
