@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import axios from 'axios';
 import { Skeleton, CircularProgress, Box } from '@mui/material';
 import DepartmentCard from '../../Component/DepartmentCard';
-import AddDepartment from '../AddDepartment/AddDepartment';
+import AddDepartment from '../../Component/AddDepartment/AddDepartment';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setDepartmentList } from '../../app/Department';
@@ -23,7 +23,7 @@ const Department = () => {
   const fetchDepartments = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("http://localhost:8080/department/get");
+      const response = await axios.get("http://xyzcomp.onrender.com/department/get");
       const { data } = response;
       setDepartment(data.departments);
       dispatch(setDepartmentList(data.departments))
@@ -45,7 +45,7 @@ const Department = () => {
   const deleteDepartment = async (id) => {
     try {
       setIsLoading(true);
-      const response = await axios.delete(`http://localhost:8080/department/delete/${id}`);
+      const response = await axios.delete(`http://xyzcomp.onrender.com/department/delete/${id}`);
       setIsLoading(false);
       window.location.reload()
     } catch (error) {

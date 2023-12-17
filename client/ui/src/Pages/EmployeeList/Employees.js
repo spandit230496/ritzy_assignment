@@ -35,7 +35,7 @@ const Employees = () => {
     const fetchData = async () => {
       setIsLoading(true)
       try {
-        const result = await axios.get('http://localhost:8080/employee/employee');
+        const result = await axios.get('http://xyzcomp.onrender.com/employee/employee');
         setIsLoading(false)
         setData(result.data.employees);
       } catch (e) {
@@ -51,7 +51,7 @@ const Employees = () => {
    const sortByLocation =async ()=>{
     try{
       setIsLoading(true)
-    const result= await axios.get("http://localhost:8080/employee/sort-by-location")
+    const result= await axios.get("http://xyzcomp.onrender.com/employee/sort-by-location")
     setIsLoading(false)
     setData(result.data.employees)
     }
@@ -63,7 +63,7 @@ const Employees = () => {
    const sortByName =async ()=>{
     try{
       setIsLoading(true)
-    const result= await axios.get(`http://localhost:8080/employee/sort-by-name?sortOrder=${direction}`)
+    const result= await axios.get(`http://xyzcomp.onrender.com/employee/sort-by-name?sortOrder=${direction}`)
     setIsLoading(false)
     setData(result.data.employees)
     }
@@ -79,7 +79,7 @@ const Employees = () => {
    const handleDelete =  async (id)=>{
     setIsLoading(true)
     try{
-      const response = await axios.delete(`http://localhost:8080/employee/delete/${id}`)
+      const response = await axios.delete(`http://xyzcomp.onrender.com/employee/delete/${id}`)
       setIsLoading(false)
       window.location.reload()
     }

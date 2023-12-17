@@ -10,7 +10,7 @@ const NumberOfEmployee = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/employee/get-dept-employee-mapping/${department}`);
+        const response = await axios.get(`http://xyzcomp.onrender.com/employee/get-dept-employee-mapping/${department}`);
         setEmployeeData(response.data.employees || []);
       } catch (error) {
         console.error('Error fetching department employee mapping:', error);

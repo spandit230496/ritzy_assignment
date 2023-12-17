@@ -18,7 +18,7 @@ const EditModal = ({ open, handleClose, initialData }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.put('http://localhost:8080/employee/assign-department/', editedData);
+      const response = await axios.put('http://xyzcomp.onrender.com/employee/assign-department/', editedData);
       
       handleClose();
       window.location.reload()

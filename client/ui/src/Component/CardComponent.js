@@ -53,7 +53,7 @@ export default function BioCard({ data, handleDelete }) {
   const handleEditSubmit = async (editedData) => {
      try{
       setLoading(true)
-      const reposne = await axios.put("http://localhost:8080/employee/assign-department/",editedData)
+      const reposne = await axios.put("http://xyzcomp.onrender.com/employee/assign-department/",editedData)
       setLoading(false)
       setEditModalOpen(false); 
      }

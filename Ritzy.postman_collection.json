@@ -24,7 +24,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/register",
+							"raw": "http://xyzcomp.onrender.com/employee/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -53,7 +53,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/register",
+							"raw": "http://xyzcomp.onrender.com/employee/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -82,7 +82,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/register",
+							"raw": "http://xyzcomp.onrender.com/employee/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -111,7 +111,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/register",
+							"raw": "http://xyzcomp.onrender.com/employee/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -140,7 +140,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/register",
+							"raw": "http://xyzcomp.onrender.com/employee/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -169,7 +169,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/register",
+							"raw": "http://xyzcomp.onrender.com/employee/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -198,7 +198,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/register",
+							"raw": "http://xyzcomp.onrender.com/employee/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -227,7 +227,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/assign-department/",
+							"raw": "http://xyzcomp.onrender.com/employee/assign-department/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -260,7 +260,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/employee/get-dept-employee-mapping/os",
+							"raw": "http://xyzcomp.onrender.com/employee/get-dept-employee-mapping/os",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -298,7 +298,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/department/create",
+							"raw": "http://xyzcomp.onrender.com/department/create",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -330,7 +330,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/department/create",
+							"raw": "http://xyzcomp.onrender.com/department/create",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -362,7 +362,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/department/create",
+							"raw": "http://xyzcomp.onrender.com/department/create",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -394,7 +394,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/department/create",
+							"raw": "http://xyzcomp.onrender.com/department/create",
 							"protocol": "http",
 							"host": [
 								"localhost"

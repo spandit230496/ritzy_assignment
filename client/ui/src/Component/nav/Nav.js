@@ -19,23 +19,30 @@ const NavBar = () => {
   const navigate = useNavigate();
   const isSmallScreen = useMediaQuery('(max-width:700px)');
   const [openDrawer, setOpenDrawer] = useState(false);
-  const isLogin = useSelector((state) => state.setLogin); 
+  const login= localStorage.getItem("login")
+  const isLogin = useSelector((state) => state.setLogin)||login;
+  const dispatch = useDispatch();
 
-   const dispatch= useDispatch()
   const handleDrawerToggle = () => {
     setOpenDrawer(!openDrawer);
   };
 
   const handleLogOut = () => {
     localStorage.removeItem('manager');
-    dispatch(setLogin(false))
+    dispatch(setLogin(false));
     navigate('/');
+    window.location.reload();
+    localStorage.removeItem("login")
   };
 
   const menuItems = [
     { text: 'Employees', link: '/employees' },
     { text: 'Department', link: '/department' },
-    { text: isLogin ? 'logout' : 'Register/Login', link: isLogin ? '/' : '/login',action:handleLogOut },
+    {
+      text: isLogin ? 'Logout' : 'Register/Login',
+      link: isLogin ? '/' : '/login',
+      action: isLogin ? handleLogOut : null, // Only assign action if logged in
+    },
   ];
 
   const renderDrawer = (
@@ -48,6 +55,7 @@ const NavBar = () => {
             component={NavLink}
             to={item.link}
             onClick={item.action || handleDrawerToggle}
+            style={{ display: item.text === 'Logout' && !isLogin ? 'none' : 'block' }} // Hide Logout if not logged in
           >
             <ListItemText primary={item.text} />
           </ListItem>
@@ -81,7 +89,7 @@ const NavBar = () => {
               {renderDrawer}
             </>
           ) : (
-            <List style={{ display: 'flex', flexDirection: 'row', width: "45%" }}>
+            <List style={{ display: 'flex', flexDirection: 'row', width: '45%' }}>
               {menuItems.map((item, index) => (
                 <ListItem
                   button
@@ -89,6 +97,7 @@ const NavBar = () => {
                   component={NavLink}
                   to={item.link}
                   onClick={item.action || handleDrawerToggle}
+                  style={{ display: item.text === 'Logout' && !isLogin ? 'none' : 'block' }} // Hide Logout if not logged in
                 >
                   <ListItemText primary={item.text} />
                 </ListItem>

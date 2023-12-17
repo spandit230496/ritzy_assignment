@@ -5,15 +5,17 @@ import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 
 const EmployeeDetails = () => {
-  const cardDetailsfg = useSelector((state) => console.log(state));
-
-
   const cardDetails = useSelector((state) => state.showModal.cardDetails.data);
-   console.log(cardDetails,typeof cardDetails,"   ============")
- 
 
-  // const  {data}  = cardDetails?.data;
-  // console.log(data, '==========================');
+  if (!cardDetails) {
+    return (
+      <Card>
+        <CardContent>
+          <Typography variant="h5">No Employee Details Available</Typography>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card>

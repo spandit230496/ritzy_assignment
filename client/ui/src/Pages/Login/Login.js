@@ -31,10 +31,10 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/employee/login', loginData);
+      const response = await axios.post('http://xyzcomp.onrender.com/employee/login', loginData);
       localStorage.setItem("manager",response.data.employee.position=="managerial")
       dispatch(setLogin(true))
-      console.log("===========",response)
+      localStorage.setItem("login",true)
       navigate('/employees')
       
     } catch (error) {

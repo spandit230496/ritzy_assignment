@@ -27,7 +27,6 @@ export default function DepartmentCard({data,deleteDeparment }) {
 
  
 
- const ratingReview = data.review || []
 
 const departmentdata={
   "name":data.name,

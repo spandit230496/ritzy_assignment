@@ -30,7 +30,7 @@ const RegisterEmployee = () => {
   const handleSubmit = async () => {
     try {
       setisloading(true)
-      const response = await axios.post('http://localhost:8080/employee/register', formData);
+      const response = await axios.post('http://xyzcomp.onrender.com/employee/register', formData);
       if (response.status === 200||201) {
         setisloading(false)
         console.log("=================",response)

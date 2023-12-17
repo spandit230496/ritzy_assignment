@@ -17,9 +17,17 @@ const AddDepartment = ({ addDepartment }) => {
 
   const [isEditing, setIsEditing] = useState(false); 
 
+  const [initialButtonText, setInitialButtonText] = useState('');
+
+  useEffect(() => {
+    
+    setInitialButtonText(isEditing ? 'Update Department' : 'Add Department');
+
+    
+  }, [isEditing]);
+
   useEffect(() => {
     if (isEdit && isEdit.isEdit) {
-      setOpen(true);
       setDepartmentName(isEdit.name); 
       setId(isEdit.id);
       showModal(isEdit.isEdit);
@@ -27,7 +35,7 @@ const AddDepartment = ({ addDepartment }) => {
     } else {
       setOpen(false);
       setDepartmentName(''); 
-      setIsEditing(isEdit);
+      setIsEditing(!isEdit);
     }
   }, [isEdit])
   
@@ -49,13 +57,13 @@ const AddDepartment = ({ addDepartment }) => {
       try {
         setIsLoading(true);
         if (isEdit) {
-        const response= await axios.put(`http://localhost:8080/department/update/${id}`,{ name: departmentName }) 
+        const response= await axios.put(`http://xyzcomp.onrender.com/department/update/${id}`,{ name: departmentName }) 
         dispatch(setEdit(false))  
         window.location.reload();
             
     
         } else {
-          const response = await axios.post('http://localhost:8080/department/create', { name: departmentName });
+          const response = await axios.post('http://xyzcomp.onrender.com/department/create', { name: departmentName });
           setDepartmentName(response.data.name); 
         }
       } catch (error) {
